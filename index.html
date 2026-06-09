@@ -259,7 +259,7 @@ const MONTHS_ID=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','No
 // HELPERS
 // ═══════════════════════════════════
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
-const today=()=>new Date().toISOString().split('T')[0];
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
 const toMK=d=>d.toISOString().slice(0,7);
 const addM=(mk,n)=>{const[y,m]=mk.split('-').map(Number);const d=new Date(y,m-1+n,1);return toMK(d)};
 const mlbl=k=>{const[y,m]=k.split('-');return MONTHS_ID[m-1]+' '+y};
